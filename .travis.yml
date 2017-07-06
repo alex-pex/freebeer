@@ -1,0 +1,26 @@
+language: node_js
+
+cache:
+  directories:
+    - node_modules
+
+matrix:
+  include:
+    - node_js: "lts/boron"
+      env: RUN_SCRIPT=lint_frontend
+    - node_js: "lts/boron"
+      env: RUN_SCRIPT=test_frontend
+    - node_js: "lts/boron"
+      env: RUN_SCRIPT=build_frontend NODE_ENV=production
+
+before_install:
+  - PATH="./bin:./node_modules/.bin:$PATH"
+
+install:
+  - travis/install_frontend.sh
+
+script:
+  - travis/$RUN_SCRIPT.sh
+
+after_script:
+  - if [[ -f travis/"$RUN_SCRIPT"_after.sh ]]; then travis/"$RUN_SCRIPT"_after.sh; fi
