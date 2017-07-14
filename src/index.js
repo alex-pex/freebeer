@@ -1,14 +1,15 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
 import App from "app";
-import registerServiceWorker from "./registerServiceWorker";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+import renderApp from "./renderApp";
+import registerServiceWorker from "./registerServiceWorker";
+import "./index.css";
+
+renderApp(<App />, document.getElementById("root"));
 registerServiceWorker();
 
 if (module.hot) {
   module.hot.accept("app", () => {
-    ReactDOM.render(<App />, document.getElementById("root"));
+    renderApp(<App />, document.getElementById("root"));
   });
 }
