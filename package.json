@@ -5,6 +5,7 @@
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-md": "^1.0.16",
     "react-scripts": "github:alex-pex/react-scripts"
   },
   "scripts": {
